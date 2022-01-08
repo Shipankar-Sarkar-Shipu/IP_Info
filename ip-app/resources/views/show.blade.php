@@ -45,9 +45,11 @@
                 $pieces = explode(",", $line);
                 echo '<tr>' . "\n";
                 foreach ($pieces as $piece) {
+
                     echo '<td>' . trim($piece) . '</td>' . "\n";
                 }
                 echo '</tr>' . "\n";
+
             }
             ?>
         </table>
