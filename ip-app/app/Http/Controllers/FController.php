@@ -28,7 +28,7 @@ class FController
             else{
                 $output=" ";
                 $ip="No IP Found";
-                return view('show',compact(['output','ip']));
+                return view('new-show',compact(['output','ip']));
             }
 
             $ip = $dns_report[0]['ip'];
@@ -48,9 +48,12 @@ class FController
                     $output .= fgets($whoisinfo,128);
                 fclose($whoisinfo);
 //                $output->paginate(10);
-                $output=explode('\r\n',$output);
 
-                return view('show',compact(['output','ip']));
+                $output=explode('>>>',$output);
+                $output=explode('\r\n',$output[0]);
+
+
+                return view('new-show',compact(['output','ip']));
             }
 
         }

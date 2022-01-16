@@ -41,6 +41,17 @@
             <?php
             echo "<tr> <td>IP:    $ip</td></tr>";
             $lines = explode("\r\n", $output[0]);
+            $info_list=array();
+            foreach ($lines as $item) {
+                $splited=explode(":",$item);
+                if (count($splited)>1){
+                    $splited[0]=trim($splited[0]);
+
+                    $info_list+=array($splited[0]=>trim(join(":",array_slice($splited,1,count($splited)))));
+                }
+            }
+//            dd($info_list);
+
             foreach ($lines as $line) {
                 $pieces = explode(",", $line);
                 echo '<tr>' . "\n";
